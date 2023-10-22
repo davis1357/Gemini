@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] Camera mainCamera;
+    Camera mainCamera;
     [SerializeField] float playerSpeed = 10f;
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField] bool isFlipped = false;
@@ -14,20 +14,21 @@ public class Player : MonoBehaviour
     BoxCollider2D myCollider;
     bool isTouching = true;
     public bool isActive = true;
-    float startingXPos;
+    //float startingXPos;
 
     // Start is called before the first frame update
     void Start()
     {
+        mainCamera = FindObjectOfType<Camera>();
         myRigidBody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<BoxCollider2D>();
-        startingXPos = transform.position.x;
+        //startingXPos = transform.position.x;
     }
 
     // Update is called once per frame
     void Update()
     {
-        mainCamera.transform.position = new Vector3(this.transform.position.x - startingXPos, mainCamera.transform.position.y, -10);
+        //mainCamera.transform.position = new Vector3(this.transform.position.x - startingXPos, mainCamera.transform.position.y, -10);
 
         PlayerMoves();
 
